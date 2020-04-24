@@ -2,11 +2,7 @@
   <div class="container">
     <app-header></app-header>
 
-    <div class="row">
-      <div class="col-xs-12 mx-3">
-        <router-view></router-view>
-      </div>
-    </div>
+    <router-view></router-view>
 
   </div>
 </template>
