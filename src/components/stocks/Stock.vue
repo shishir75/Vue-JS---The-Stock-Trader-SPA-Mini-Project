@@ -1,5 +1,5 @@
 <template>
-    
+    <h1>The Stocks - Stock Components</h1>
 </template>
 
 <script>
