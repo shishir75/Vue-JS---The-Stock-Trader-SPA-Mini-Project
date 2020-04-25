@@ -3,14 +3,15 @@
         <div class="card mt-3">
             <h5 class="card-header">{{ stock.name }} <small>(Price: {{ stock.price }} | Quantity: {{ stock.quantity }})</small></h5>
             <div class="card-body">
-                <div style="width: 85%">
-                    <input type="number" class="form-control" placeholder="Quantity" v-model="quantity">
+                <div style="width: 68%">
+                    <input type="number" class="form-control" placeholder="Quantity" v-model="quantity" :class="{danger: insufficientQuantity}">
                 </div>
                 <div class="float-right" style="margin-top: -38px;">
                     <button class="btn btn-success ml-2"
                             @click="sellStock"
-                            :disabled="quantity <= 0"
-                    >Sell</button>
+                            :disabled="quantity <= 0 || insufficientQuantity"
+                            :class="{'btn-danger': insufficientQuantity}"
+                    >{{ insufficientQuantity ? 'Insufficient Qty' : 'Sell'}}</button>
                 </div>
             </div>
         </div>
@@ -27,6 +28,11 @@
         data() {
             return {
                 quantity: 0,
+            }
+        },
+        computed: {
+            insufficientQuantity() {
+                return this.quantity > this.stock.quantity;
             }
         },
         methods: {
@@ -47,6 +53,8 @@
 </script>
 
 <style scoped>
-
+    .danger {
+        border: 1px solid red;
+    }
 </style>
 
