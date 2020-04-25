@@ -1,7 +1,7 @@
 <template>
     <div class="col-md-6">
         <div class="card mt-3">
-            <h5 class="card-header">{{ stock.name }} <small>(Price: {{ stock.price }})</small></h5>
+            <h5 class="card-header">{{ stock.name }} <small>(Price: {{ stock.price | currency }})</small></h5>
             <div class="card-body">
                 <div style="width: 68%">
                     <input type="number" class="form-control" placeholder="Quantity" v-model="quantity" :class="{danger: insufficientFunds}">
