@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import response from "vue-resource/src/http/response";
 
 export const loadData = ({commit}) => {
     Vue.http.get('data.json')
