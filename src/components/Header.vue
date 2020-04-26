@@ -15,7 +15,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" @click.prevent="isDropdownShow = !isDropdownShow" href="#">Save & Load</a>
                     <div class="dropdown-menu" :class="{ show: isDropdownShow }">
-                        <a class="dropdown-item" href="#">Save Data</a>
+                        <a class="dropdown-item" href="#" @click.prevent="saveData">Save Data</a>
                         <a class="dropdown-item" href="#">Load Data</a>
                     </div>
                 </li>
@@ -45,6 +45,14 @@
             ]),
             endDay() {
                 return this.randomizeStocks();
+            },
+            saveData() {
+                const data = {
+                    funds: this.$store.getters.funds,
+                    stockPortfolio: this.$store.getters.stockPortfolio,
+                    stocks: this.$store.getters.stocks
+                };
+                this.$http.put('data.json', data);
             }
         }
     }
