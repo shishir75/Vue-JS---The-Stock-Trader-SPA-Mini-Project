@@ -16,7 +16,7 @@
                     <a class="nav-link dropdown-toggle" @click.prevent="isDropdownShow = !isDropdownShow" href="#">Save & Load</a>
                     <div class="dropdown-menu" :class="{ show: isDropdownShow }">
                         <a class="dropdown-item" href="#" @click.prevent="saveData">Save Data</a>
-                        <a class="dropdown-item" href="#">Load Data</a>
+                        <a class="dropdown-item" href="#" @click.prevent="loadData">Load Data</a>
                     </div>
                 </li>
 
@@ -53,6 +53,9 @@
                     stocks: this.$store.getters.stocks
                 };
                 this.$http.put('data.json', data);
+            },
+            loadData() {
+
             }
         }
     }
