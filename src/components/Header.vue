@@ -13,21 +13,13 @@
                     <a class="nav-link" href="#" @click.prevent="endDay">End Day</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a
-                       class="nav-link dropdown-toggle"
-                       href="#"
-                       id="navbarDropdown"
-                       role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true"
-                       aria-expanded="false">Save & Load
-                    </a>
-
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="nav-link dropdown-toggle" @click.prevent="isDropdownShow = !isDropdownShow" href="#">Save & Load</a>
+                    <div class="dropdown-menu" :class="{ show: isDropdownShow }">
                         <a class="dropdown-item" href="#">Save Data</a>
                         <a class="dropdown-item" href="#">Load Data</a>
                     </div>
                 </li>
+
             </ul>
         </div>
     </nav>
@@ -37,6 +29,11 @@
     import { mapActions } from 'vuex';
     export default {
         name: "Header",
+        data() {
+          return {
+              isDropdownShow: false
+          }
+        },
         computed: {
             funds() {
                 return this.$store.getters.funds;
